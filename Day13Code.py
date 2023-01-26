@@ -1,5 +1,5 @@
 input = list()
-with open("Day13Input.txt","r") as file:
+with open("Day13Example.txt","r") as file:
     for line in file:
         a_line = line.strip()
         if len(a_line)>1:

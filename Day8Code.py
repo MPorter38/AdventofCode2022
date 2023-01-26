@@ -4,7 +4,7 @@
 
 import numpy as np
 
-f = "Day8Input.txt" 
+f = "Day8Example.txt" 
 
 with open(f,"r") as file:
     num_line = (sum(1 for line in file))
@@ -18,23 +18,23 @@ with open(f,"r") as file:
     for i in range(0,num_line):
         grid[i,:] = list(file.readline().strip())
 
-# counter = (2 * num_line) + (2 * (line_length-2)) 
-# print(counter)
-# for j in range(1,num_line-1):
-#     for k in range(1,line_length-1):
-#         tree = grid[j,k]
-#         updown = grid[:,k]
-#         leftright = grid[j,:]
-#         if tree > max(updown[0:j]):
-#             counter += 1 
-#         elif tree > max(updown[j+1:num_line]):
-#             counter +=1 
-#         elif tree > max(leftright[0:k]):
-#             counter +=1 
-#         elif tree > max(leftright[k+1:line_length]):
-#             counter +=1 
+counter = (2 * num_line) + (2 * (line_length-2)) 
 
-# print(counter)
+for j in range(1,num_line-1):
+    for k in range(1,line_length-1):
+        tree = grid[j,k]
+        updown = grid[:,k]
+        leftright = grid[j,:]
+        if tree > max(updown[0:j]):
+            counter += 1 
+        elif tree > max(updown[j+1:num_line]):
+            counter +=1 
+        elif tree > max(leftright[0:k]):
+            counter +=1 
+        elif tree > max(leftright[k+1:line_length]):
+            counter +=1 
+
+print(counter)
 
 # Part 2 
 # We now want the output to be the max scenic score of the trees in the grid. 

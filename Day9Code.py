@@ -4,7 +4,7 @@
 
 import re
 
-f = "Day9Input.txt" 
+f = "Day9Example.txt" 
 
 with open(f,"r") as file:
     num_line = (sum(1 for line in file))
@@ -13,12 +13,11 @@ direction = list()
 distance = list()
 
 with open(f,"r") as file:
-    for i in range(0,num_line):
-        a_line = file.readline().strip()
+    for line in file:
+        a_line = line.strip()
         direction.append(list(a_line)[0])
         distance.append(int(re.search('(\d+)',a_line).group(1)))
 
-# print(distance[898])
 # positions relative to start of (0,0)
 
 T_pos_all = set()

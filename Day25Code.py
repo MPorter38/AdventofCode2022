@@ -19,7 +19,7 @@ def Convert(SNAFU:str):
 
 converted = 0 
 
-with open("Day25Input.txt","r") as file:
+with open("Day25Example.txt","r") as file:
     for line in file:
         converted += Convert(line.strip()) 
 
@@ -41,7 +41,7 @@ def Encode(Decimal:int):
         Decimal = Decimal // 5
         if Decimal == 0:
             break
-    #print(output)
+
     for i in range(len(output)-1,0,-1):
         if len(output[i])>1:
             element = output[i]
@@ -58,7 +58,6 @@ def Encode(Decimal:int):
                 else:
                     output.pop(i-1)
                     output.insert(i-1,[1,"0"])
-        #print(i,output)
 
     print(output)
 

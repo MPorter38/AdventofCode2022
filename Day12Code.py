@@ -3,7 +3,7 @@
 
 map = list()
 
-with open("Day12Input.txt","r") as file:
+with open("Day12Example.txt","r") as file:
     while True:
         a_line = file.readline()
         if not a_line:

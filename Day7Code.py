@@ -1,6 +1,6 @@
 import re 
 
-with open("Day7Input.txt","r") as file:
+with open("Day7Example.txt","r") as file:
     current_path = list()
     dir_dic = {}
     for line in file:

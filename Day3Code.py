@@ -2,37 +2,32 @@
 # For the output we need to split the string in half and find the letter that is common to both halves
 # This is then converted to a score (a=1, b=2,...,z=26,A=27,...,Z=52) and the output is the sum
 
-file_name = 'Day3Input.txt'
+file_name = 'Day3Example.txt'
+total = 0 
 
 with open(file_name,'r') as file:
-    num_lines = (sum(1 for line in file))
+    for line in file:
+        midpoint = (len(line)-1)/2
+        first_set = list(line)[0:int(midpoint)]
+        second_set = list(line)[int(midpoint):len(line)-1]
+        common_letter = list(set(first_set) & set(second_set))[0]
+        common_letter = int(ord(common_letter))
+        if common_letter < 91:
+            common_letter -= 38
+        else:
+            common_letter -= 96        
+        total += common_letter
 
-# total = 0 
-
-# with open(file_name,'r') as file:
-#     for i in range(1,num_lines + 1):
-#         a_line = file.readline()
-#         midpoint = (len(a_line)-1)/2
-#         first_set = list(a_line)[0:int(midpoint)]
-#         second_set = list(a_line)[int(midpoint):len(a_line)-1]
-#         common_letter = list(set(first_set) & set(second_set))[0]
-#         common_letter = int(ord(common_letter))
-#         if common_letter < 91:
-#             common_letter = common_letter - 38
-#         else:
-#             common_letter = common_letter - 96 
-        
-#         total = total + common_letter
-
-# file.close()
-
-# print(total)
+print(f'Part 1 is {total}')
 
 # Part 2
 # Find the common letter between three consecutive rows and sum up as before 
 
 total = 0 
 common_letter = 0 
+
+with open(file_name,'r') as file:
+    num_lines = sum(1 for line in file)
 
 with open(file_name,'r') as file:
     for i in range(1,int(num_lines/3)+1):
@@ -50,11 +45,9 @@ with open(file_name,'r') as file:
         common_letter = int(ord(common_letter))
         
         if common_letter < 91:
-            common_letter = common_letter - 38
+            common_letter -= 38
         else:
-            common_letter = common_letter - 96
+            common_letter -= 96
         total += common_letter
 
-file.close()
-
-print(total)
+print(f'Part 2 is {total}')

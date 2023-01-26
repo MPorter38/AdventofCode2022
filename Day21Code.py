@@ -1,6 +1,6 @@
 
 monkeys = {}
-with open("Day21Input.txt","r") as file:
+with open("Day21Example.txt","r") as file:
     for line in file:
         monkeys[line.split(":")[0]] = line.strip().split(": ")[1]
 

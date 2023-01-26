@@ -1,6 +1,6 @@
 xyz = []
 
-with open("Day18Input.txt","r") as file:
+with open("Day18Example.txt","r") as file:
     for line in file:
         line = line.split(",")
         xyz.append((int(line[0]),int(line[1]),int(line[2])))

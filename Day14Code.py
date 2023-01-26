@@ -3,7 +3,7 @@ import re
 y_max = 0 
 x_left = 500
 rock_coords = list()
-with open("Day14Input.txt","r") as file:
+with open("Day14Example.txt","r") as file:
     for line in file:
         line = line.split("->")
         coord_list = list()

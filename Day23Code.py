@@ -1,6 +1,6 @@
 monkeys = {}
 
-with open("Day23Input.txt","r") as file:
+with open("Day23Example.txt","r") as file:
     for i,line in enumerate(file):
         for j,item in enumerate(line):
             if item == "#":

@@ -1,6 +1,6 @@
 from collections import deque
 encrypted = deque()
-with open("Day20Input.txt","r") as file:
+with open("Day20Example.txt","r") as file:
     for line in file:
         encrypted.append(int(line.strip()))
 

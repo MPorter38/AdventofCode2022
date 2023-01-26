@@ -8,7 +8,7 @@ values = list()
 sign = list()
 i=0
 
-with open("Day10Input.txt","r") as file:
+with open("Day10Example.txt","r") as file:
     while True:
         a_line = file.readline().strip()
         if not a_line:

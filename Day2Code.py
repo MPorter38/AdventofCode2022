@@ -4,84 +4,86 @@
 # 6 for a win, 3 for a draw and 0 for a lose 
 # 1 for using rock (X), 2 for paper (Y) and 3 for scissor (Z) 
 
-file_name = 'Day2Input.txt'
+file_name = 'Day2Example.txt'
+
+score1 = 0 
+
+def add_hand_score(hand):
+    score = 3 
+    if hand == 'X':
+        score =  1 
+    elif hand == 'Y':
+        score =  2
+    return score
+
+def add_comparison_score(hand1, hand2):
+    score = 0
+    if hand1 == 'A':
+        if hand2 == 'X':
+            score += 3
+        elif hand2 == 'Y':
+            score += 6 
+    elif hand1 == 'B':
+        if hand2 == 'Z':
+            score += 6
+        elif hand2 == 'Y':
+            score += 3 
+    else:
+        if hand2 == 'X':
+            score += 6
+        elif hand2 == 'Z':
+            score += 3 
+    return score
 
 with open(file_name,'r') as file:
-    num_lines = (sum(1 for line in file))
+    for line in file:
+        first_hand = line.split()[0]
+        second_hand = line.split()[1]
 
-# score1 = 0 
-# score2 = 0 
+        score1 += add_hand_score(second_hand)
+        score1 += add_comparison_score(first_hand,second_hand)
 
-# with open(file_name,'r') as file:
-#     for i in range(0, num_lines):
-#         a_line = file.readline()
-#         first_hand = a_line.split()[0]
-#         second_hand = a_line.split()[1]
-
-#         if second_hand == 'X':
-#             score1 = score1 + 1 
-#         elif second_hand == 'Y':
-#             score1 = score1 + 2
-#         else:
-#             score1 = score1 + 3
-
-#         if first_hand == 'A':
-#             if second_hand == 'X':
-#                 score2 = score2 + 3
-#             elif second_hand == 'Y':
-#                 score2 = score2 + 6 
-#         elif first_hand == 'B':
-#             if second_hand == 'Z':
-#                 score2 = score2 + 6
-#             elif second_hand == 'Y':
-#                 score2 = score2 + 3 
-#         else:
-#             if second_hand == 'X':
-#                 score2 = score2 + 6
-#             elif second_hand == 'Z':
-#                 score2 = score2 + 3 
-
-# print(score2 + score1)
+print(f'Part 1 is {score1}')
 
 # part 2
 # the second column says how the round needs to end: 
 # X means you need to lose, Y means you need to end the round in a draw, and Z means you need to win.
 
-score3 = 0 
-score4 = 0 
+score2 = 0  
+
+def add_score(hand1, hand2):
+    score = 0
+    if hand2 == 'Y':
+        score += 3 
+        if hand1 == 'A':
+            score += 1
+        elif hand1 == 'B':
+            score += 2
+        else:
+            score += 3
+
+    elif hand2 == 'Z':
+        score += 6
+        if hand1 == 'A':
+            score += 2
+        elif hand1 == 'B':
+            score += 3
+        else:
+            score += 1 
+            
+    else:
+        if hand1 == 'A':
+            score += 3
+        elif hand1 == 'B':
+            score += 1
+        else:
+            score += 2
+    return score
 
 with open(file_name,'r') as file:
-    for i in range(0, num_lines):
-        a_line = file.readline()
-        first_hand = a_line.split()[0]
-        second_hand = a_line.split()[1]
+    for line in file:
+        first_hand = line.split()[0]
+        second_hand = line.split()[1]
+        score2 += add_score(first_hand,second_hand)
         
-        if second_hand == 'Y':
-            score3 = score3 + 3 
-            if first_hand == 'A':
-                score4 = score4 + 1
-            elif first_hand == 'B':
-                score4 = score4 + 2
-            else:
-                score4 = score4 +3
-
-        elif second_hand == 'Z':
-            score3 = score3 + 6
-            if first_hand == 'A':
-                score4 = score4 + 2
-            elif first_hand == 'B':
-                score4 = score4 + 3
-            else:
-                score4 = score4 + 1 
-                
-        else:
-            if first_hand == 'A':
-                score4 = score4 + 3
-            elif first_hand == 'B':
-                score4 = score4 + 1
-            else:
-                score4 = score4 + 2
-        
-
-
-print(score3 + score4)
+print(f'Part 2 is {score2}')

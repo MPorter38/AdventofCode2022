@@ -4,7 +4,7 @@ Sy=list()
 Bx=list()
 By=list()
 Y = 2000000
-with open("Day15Input.txt","r") as file:
+with open("Day15Example.txt","r") as file:
     while True:
         a_line = file.readline().strip()
         if not a_line:
